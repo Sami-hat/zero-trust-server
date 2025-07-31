@@ -32,8 +32,8 @@ A secure, multi-threaded file server implementation with end-to-end encryption, 
 ```
 ┌─────────────┐         ┌─────────────┐         ┌─────────────┐
 │   Client    │ <-----> │   Server    │ <-----> │  Storage    │
-│             │  TLS    │             │         │             │
-│ - Encrypt   │  1.3    │ - Multi-    │         │ - Encrypted │
+│             │   TLS   │             │         │             │
+│ - Encrypt   │         │ - Multi-    │         │ - Encrypted │
 │ - Decrypt   │         │   threaded  │         │   files     │
 │ - Hash      │         │ - Zero-     │         │ - Hashed    │
 │             │         │   knowledge │         │   names     │
