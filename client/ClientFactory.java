@@ -1,4 +1,5 @@
 package client;
+
 import java.security.KeyStore;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -66,14 +67,15 @@ public class ClientFactory {
             InputStream clientInputStream = ClassLoader.getSystemClassLoader().getResourceAsStream(this.KEYSTORE_PATH);
             keystore.load(clientInputStream, password.toCharArray());
 
-            // TrustManagerFactory 
+            // TrustManagerFactory
             KeyStore trustStore = KeyStore.getInstance("PKCS12");
 
             trustManagerFactory = TrustManagerFactory.getInstance("PKIX", "SunJSSE");
-            InputStream serverInputStream = ClassLoader.getSystemClassLoader().getResourceAsStream(this.TRUSTSTORE_PATH);
+            InputStream serverInputStream = ClassLoader.getSystemClassLoader()
+                    .getResourceAsStream(this.TRUSTSTORE_PATH);
             trustStore.load(serverInputStream, password.toCharArray());
             trustManagerFactory.init(trustStore);
-            
+
             x509TrustManager = null;
             for (TrustManager trustManager : trustManagerFactory.getTrustManagers()) {
                 if (trustManager instanceof X509TrustManager) {
@@ -82,7 +84,7 @@ public class ClientFactory {
                 }
             }
 
-            // KeyManagerFactory 
+            // KeyManagerFactory
             keyManagerFactory = KeyManagerFactory.getInstance("SunX509", "SunJSSE");
             keyManagerFactory.init(keystore, password.toCharArray());
 
@@ -93,8 +95,9 @@ public class ClientFactory {
                     break;
                 }
             }
-            
-            if (x509KeyManager == null) throw new NullPointerException();
+
+            if (x509KeyManager == null)
+                throw new NullPointerException();
 
         } catch (CertificateException e) {
             e.printStackTrace();

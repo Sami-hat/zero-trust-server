@@ -1,4 +1,5 @@
 package server;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,14 +23,14 @@ import javax.net.ssl.X509TrustManager;
 @SuppressWarnings("unused")
 
 public class ServerFactory {
-    
-    private static final String KEYSTORE_PATH = "resources/server/server-keystore.p12"; 
+
+    private static final String KEYSTORE_PATH = "resources/server/server-keystore.p12";
     private static final String TRUSTSTORE_PATH = "resources/server/server-truststore.p12";
 
     private static final String PASSWORD = "123456";
 
     private static final String SCRIPT_PATH = "scripts/run_server.sh";
-    
+
     private KeyManagerFactory keyManagerFactory;
     private TrustManagerFactory trustManagerFactory;
 
@@ -37,7 +38,7 @@ public class ServerFactory {
     private X509KeyManager x509KeyManager;
 
     public ServerFactory() {
-    
+
         try {
             // Generate RSA keys for client
             ProcessBuilder processBuilder = new ProcessBuilder("bash", SCRIPT_PATH);
@@ -86,7 +87,8 @@ public class ServerFactory {
                     break;
                 }
             }
-            if (x509KeyManager == null) throw new NullPointerException("No X509KeyManager found");
+            if (x509KeyManager == null)
+                throw new NullPointerException("No X509KeyManager found");
 
         } catch (CertificateException e) {
             System.err.println("Certificate error: " + e.getMessage());
