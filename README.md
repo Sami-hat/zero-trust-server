@@ -27,23 +27,9 @@ A secure, multi-threaded file server implementation with end-to-end encryption, 
 - **Group Management**: Share with multiple users at once
 - **Audit Logging**: Comprehensive activity logging
 
-## Architecture
-
-```
-┌─────────────┐         ┌─────────────┐         ┌─────────────┐
-│   Client    │ <-----> │   Server    │ <-----> │  Storage    │
-│             │   TLS   │             │         │             │
-│ - Encrypt   │         │ - Multi-    │         │ - Encrypted │
-│ - Decrypt   │         │   threaded  │         │   files     │
-│ - Hash      │         │ - Zero-     │         │ - Hashed    │
-│             │         │   knowledge │         │   names     │
-└─────────────┘         └─────────────┘         └─────────────┘
-```
-
 ## Requirements
 
 - Java 11 or higher
-- Maven or Gradle for dependency management
 - OpenSSL for certificate generation
 - JUnit 5 for testing (optional)
 
