@@ -44,7 +44,6 @@ A secure, multi-threaded file server implementation with end-to-end encryption, 
 ## Requirements
 
 - Java 11 or higher
-- Maven or Gradle for dependency management
 - OpenSSL for certificate generation
 - JUnit 5 for testing (optional)
 
