@@ -9,7 +9,7 @@ A secure, multi-threaded file server implementation with end-to-end encryption, 
 - **End-to-End Encryption**: AES-256 for file encryption, RSA-2048 for key exchange
 - **Authenticated Encryption**: Optional AES-GCM mode for integrity protection
 - **Secure File Deletion**: Multiple-pass overwriting before deletion
-- **Password Hashing**: PBKDF2 with SHA-256 (100,000 iterations)
+- **Password Hashing**: PBKDF2 with SHA-256 (100 iterations)
 - **Session Management**: Secure session tokens with configurable TTL
 - **Rate Limiting**: Configurable per-client request limits
 
@@ -30,14 +30,15 @@ A secure, multi-threaded file server implementation with end-to-end encryption, 
 ## Architecture
 
 ```
-┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+===============         ===============         ===============
 │   Client    │ <-----> │   Server    │ <-----> │  Storage    │
 │             │   TLS   │             │         │             │
 │ - Encrypt   │         │ - Multi-    │         │ - Encrypted │
 │ - Decrypt   │         │   threaded  │         │   files     │
 │ - Hash      │         │ - Zero-     │         │ - Hashed    │
 │             │         │   knowledge │         │   names     │
-└─────────────┘         └─────────────┘         └─────────────┘
+===============         ===============         ===============
+
 ```
 
 ## Requirements
